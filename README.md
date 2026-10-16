@@ -130,6 +130,11 @@ esptool.py --chip esp32c5 --port COM_PORT_C5 --baud 460800 write_flash 0x0 c5_fi
 
 ---
 
+## License
+
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+---
+
 # Русский
 
 # WT99P4C5-S1 — рабочий пример
@@ -249,8 +254,14 @@ esptool.py --chip esp32c5 --port COM_PORT_C5 --baud 460800 write_flash 0x0 c5_fi
 - ESP-IDF: **v5.5.2**
 - Для сборки прошивки C5 используйте пример `examples/wifi/sta/cp` из репозитория `esp-hosted-mcu`
 
+## Лицензия
+
+Проект распространяется под лицензией MIT — см. файл [LICENSE](LICENSE).
+
 ## Ссылки
 
 - [ESP-Hosted-MCU](https://github.com/espressif/esp-hosted-mcu)
 - [ESP-IDF](https://github.com/espressif/esp-idf)
 - [espressif/esp_codec_dev](https://components.espressif.com/components/espressif/esp_codec_dev)
+
+---
