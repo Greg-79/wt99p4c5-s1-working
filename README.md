@@ -1,13 +1,12 @@
 [English](#english) | [Русский](#русский)
-
+![WT99P4C5-S1](docs/board.jpg)
+https://wiki.wireless-tag.com/docs/zh/WT99P4C5-S1/board_resources.html
 ---
 
 # English
 
 # WT99P4C5-S1 Working Example
-![image.jpg]()
 
-https://wiki.wireless-tag.com/docs/zh/WT99P4C5-S1/board_resources.html
 ESP32-P4 + ESP32-C5 (SDIO) working example with Wi-Fi, ES8311 audio, and microphone level monitoring.
 
 ## Hardware
