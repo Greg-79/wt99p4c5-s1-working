@@ -103,7 +103,18 @@ I (xxx) MAIN: got ip:192.168.x.x
 I (xxx) MAIN: connected to ASUS123
 I (xxx) MIC: Peak: 13472, RMS: 5423.6
 ```
+## C5 Firmware
 
+The ESP32-C5 coprocessor must be flashed with ESP-Hosted firmware. A pre-built binary is included in the `c5_firmware/` directory.
+
+See [`c5_firmware/README.md`](c5_firmware/README.md) for detailed flashing instructions.
+
+Quick start:
+
+```bash
+esptool.py --chip esp32c5 --port COM_PORT_C5 --baud 460800 erase_flash
+esptool.py --chip esp32c5 --port COM_PORT_C5 --baud 460800 write_flash 0x0 c5_firmware/eh_cp_wifi_sta.bin
+```
 ## Notes
 
 - C5 firmware: ESP-Hosted **3.0.9** (built from `esp-hosted-mcu`)
@@ -219,7 +230,18 @@ I (xxx) MAIN: got ip:192.168.x.x
 I (xxx) MAIN: connected to ASUS123
 I (xxx) MIC: Peak: 13472, RMS: 5423.6
 ```
+## Прошивка C5
 
+Сопроцессор ESP32-C5 должен быть прошит прошивкой ESP-Hosted. Готовый бинарник включён в директорию `c5_firmware/`.
+
+Подробная инструкция — в файле [`c5_firmware/README.md`](c5_firmware/README.md).
+
+Быстрый старт:
+
+```bash
+esptool.py --chip esp32c5 --port COM_PORT_C5 --baud 460800 erase_flash
+esptool.py --chip esp32c5 --port COM_PORT_C5 --baud 460800 write_flash 0x0 c5_firmware/eh_cp_wifi_sta.bin
+```
 ## Примечания
 
 - Прошивка C5: ESP-Hosted **3.0.9** (собрана из `esp-hosted-mcu`)
