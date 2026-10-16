@@ -1,3 +1,9 @@
+[English](#english) | [Русский](#русский)
+
+---
+
+# English
+
 # WT99P4C5-S1 Working Example
 
 ESP32-P4 + ESP32-C5 (SDIO) working example with Wi-Fi, ES8311 audio, and microphone level monitoring.
@@ -48,12 +54,54 @@ ESP32-P4 + ESP32-C5 (SDIO) working example with Wi-Fi, ES8311 audio, and microph
 
 ## Known Issues
 
-1. **ES7210 conflict**: The stock `ksdiy_p4c5_audio` component tries to init ES7210, which is NOT present on this board. You MUST replace `managed_components/kevincoooool__ksdiy_p4c5_audio/audio_setup.c` with `audio_setup_patched.c` from the project root after the first build, then rebuild.
+### 1. ES7210 conflict
 
-2. **SD card**: Not tested. There is a known conflict between ESP-Hosted (SDIO slot 1) and SD card (slot 0) in ESP-IDF.
+The stock `ksdiy_p4c5_audio` component tries to init **ES7210**, which is **NOT** present on this board. The microphone on WT99P4C5-S1 is connected directly to ES8311.
 
-## Build
+**Fix:** After the first build (`idf.py build`), replace:
+managed_components/kevincoooool__ksdiy_p4c5_audio/audio_setup.c
+
+text
+
+with `audio_setup_patched.c` from the project root, then rebuild:
 
 ```bash
+idf.py build
+idf.py -p COM_PORT flash
+2. SD card not tested
+There is a known conflict between ESP-Hosted (SDIO slot 1) and SD card (slot 0) in ESP-IDF. SD card is not used in this example.
+
+Build
+bash
 idf.py set-target esp32p4
 idf.py build
+Important: After the first build, replace audio_setup.c with audio_setup_patched.c (see above), then rebuild.
+
+Flash
+bash
+idf.py -p COM_PORT flash monitor
+Expected Log
+text
+I (xxx) AUDIO: Created dedicated I2C bus on GPIO7/8
+I (xxx) AUDIO: Found I2C device at address: 0x18
+I (xxx) ES8311: Work in Slave mode
+I (xxx) AUDIO: ES8311 duplex ready (DAC+ADC)
+I (xxx) eh_init_evt: slave chip id: 0x17 (esp32c5)
+I (xxx) eh_init_evt: esp-hosted fw versions: host=3.0.9 coprocessor=3.0.9 (match)
+I (xxx) MAIN: got ip:192.168.x.x
+I (xxx) MAIN: connected to ASUS123
+I (xxx) MIC: Peak: 13472, RMS: 5423.6
+Notes
+C5 firmware: ESP-Hosted 3.0.9 (built from esp-hosted-mcu)
+
+ESP-IDF: v5.5.2
+
+To build C5 firmware, use examples/wifi/sta/cp from the esp-hosted-mcu repository
+
+Links
+ESP-Hosted-MCU
+
+ESP-IDF
+
+espressif/esp_codec_dev
+
